@@ -27,12 +27,8 @@ const letters = {
     "z": "10001"
 };
 
-const word = "qwer" // Ввести слово с четным кол-вом букв
-
-const n = 2
-const letterInfo = []
-let firstHalf = []
-let secondHalf = []
+const word = "qwerty";
+const n = 1;
 
 if(n >= word.length * 5) {
     console.log("Нельзя использовать такое большое число раундов для этого слова! (Не должно быть больше чем СЛОВО * 5)")
@@ -40,60 +36,25 @@ if(n >= word.length * 5) {
 }
 
 if (word.length % 2 !== 0 || word.length === 0) {
-    console.log("Нельзя шифровать слова с нечетным кол-вом слов!")
+    console.log("Нельзя шифровать слова с нечетным кол-вом букв!");
     return;
-};
-
-word.split("").map(item => {
-    letterInfo.push(getLetter(item))
-})
-
-for (let i = 0; i < word.length / 2; i++) {
-    firstHalf.push(letterInfo[i])
 }
 
-for (let i = word.length / 2; i < word.length; i++) {
-    secondHalf.push(letterInfo[i])
-}
+const letterInfo = word.split("").map(letter => letters[letter.toLowerCase()]);
 
-console.log("Было:", firstHalf.join(" ") + " | " + secondHalf.join(" "))
+let firstHalf = letterInfo.slice(0, letterInfo.length / 2);
+let secondHalf = letterInfo.slice(letterInfo.length / 2);
+
+console.log("Было:", firstHalf.join(" ") + " | " + secondHalf.join(" "));
 
 for (let i = 1; i <= n; i++) {
-    let newNumbers = blockFeistel(firstHalf, secondHalf, i)
-    let divide = divideString(newNumbers)
-    firstHalf = divide[0].split("")
-    secondHalf = divide[1].split("")
+    let newNumbers = secondHalf.join("") + XOR(firstHalf.join(""), secondHalf.join(""));
+    let [left, right] = divideString(newNumbers);
+    firstHalf = left.split("");
+    secondHalf = right.split("");
 }
 
-console.log("Ответ:", firstHalf.join("") + " | " + secondHalf.join(""))
-
-function getLetter(letter) {
-    const letArray = letters[letter.toLowerCase()]
-    return letArray
-}
-
-function blockFeistel(numberLeft, numberRight, key) {
-    let left = "";
-    let right = "";
-
-    numberLeft.map(item => { left += item });
-    numberRight.map(item => { right += item });
-
-    let leftSplit = left.split("");
-
-    left = moveElements(leftSplit, key).join("")
-    left = XOR(left, right)
-
-    return right + left
-}
-
-function moveElements(arr, n) {
-    if (n >= arr.length) {
-        return arr;
-    }
-
-    return arr.slice(n).concat(arr.slice(0, n));
-}
+console.log("Ответ:", firstHalf.join("") + " | " + secondHalf.join(""));
 
 function XOR(a, b) {
     let result = "";
@@ -104,8 +65,6 @@ function XOR(a, b) {
 }
 
 function divideString(str) {
-    const length = str.length;
-    const halfLength = Math.ceil(length / 2);
-
+    const halfLength = Math.ceil(str.length / 2);
     return [str.slice(0, halfLength), str.slice(halfLength)];
 }

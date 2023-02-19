@@ -7,7 +7,7 @@
 ## Компиляторы
 * Онлайн компилятор JavaScript: [Кликабельно](https://www.programiz.com/javascript/online-compiler/)
 * Онлайн компилятор C++: [Кликабельно](https://www.programiz.com/cpp-programming/online-compiler/)
-* Онлайн комплятор C++ №2: [Кликабельно](https://replit.com/languages/cpp)
+* Онлайн компилятор C++ №2: [Кликабельно](https://replit.com/languages/cpp)
 
 ## Инструкции к работам
 * ### [Сеть Фейстеля (Кликабельно)](https://github.com/Garoika/shifrovanie/blob/main/%D0%A1%D0%B5%D1%82%D1%8C%20%D0%A4%D0%B5%D0%B9%D1%81%D1%82%D0%B8%D0%BB%D1%8F.js)

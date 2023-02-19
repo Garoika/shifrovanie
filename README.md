@@ -20,3 +20,4 @@
 
 * ### [Гамирование](https://github.com/Garoika/shifrovanie/blob/main/%D0%93%D0%B0%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20c%2B%2B.cpp)
   + Отлично работает в Visual Studio. Запускается не во всех компиляторах (можно запустить тут: [Кликабельно](https://replit.com/languages/cpp))
+  + Запустить программу, ввести 3 числа черезх Enter (первое число - Enter, второе число - Enter, третье число - Enter)

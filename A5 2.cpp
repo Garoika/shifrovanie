@@ -57,8 +57,8 @@ string TextToBinary(string word) {
 string generateGammaKey(string textBinary) {
 	string secretGamma = "1101010100011010110011001100111010100101110000101101100110000010";
 	string gammaPart1 = secretGamma.substr(0, 19);
-	string gammaPart2 = secretGamma.substr(19, 23);
-	string gammaPart3 = secretGamma.substr(42, 22);
+	string gammaPart2 = secretGamma.substr(19, 22);
+	string gammaPart3 = secretGamma.substr(41, 23);
 	string finalGamma;
 	for (int i = 0; i < textBinary.length(); i++) {
 		finalGamma += XOR(XOR(gammaPart1[0], gammaPart2[0]), gammaPart3[0]);
